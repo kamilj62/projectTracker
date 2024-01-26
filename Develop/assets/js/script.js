@@ -105,14 +105,14 @@ function handleProjectFormSubmit(event) {
 projectFormEl.on('submit', handleProjectFormSubmit);
 // BONUS
 // Remove a project from local storage and display the updated project data
-// deleteButtonEl.on('submit', handleDeleteProject);
+deleteButtonEl.on('click', handleDeleteProject);
 
-// function handleDeleteProject(event) {
-// 	event.preventDefault();
-// 	localStorage.removeItem('projects');
+function handleDeleteProject(event) {
+	event.preventDefault();
+	localStorage.removeItem('projects');
 	
 
-// }
+}
 
 // Use jQuery event delegation to listen for clicks on dynamically added delete buttons.
 // YOUR CODE
