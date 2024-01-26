@@ -9,6 +9,15 @@
 
 body {
 	/* TODO: Apply custom Google font */
+	/* <uniquifier>: Use a uniquifier for the class name
+	<weight>: Use a value from 100 to 900 */
+
+	.montserrat{
+	font-family: "Montserrat", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	}
 }
 
 h1,

@@ -31,6 +31,8 @@ function handleProjectFormSubmit(event) {
 
 	// TODO: read user input from the form and bundle it in a new project object
 
+	
+
 	// TODO: retrieve the current array of projects from local storage, add the new project object to it and, save the updated array of projects to local storage
 
 	// TODO: re-render the saved project data
@@ -48,3 +50,4 @@ function handleDeleteProject() {
 
 // Use jQuery event delegation to listen for clicks on dynamically added delete buttons.
 // YOUR CODE
+
