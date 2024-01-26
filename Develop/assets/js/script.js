@@ -5,6 +5,7 @@ var projectFormEl = $("#project-form");
 var projectNameEl = $('#project-name-input');
 var projectTypeEl = $('#project-type-input');
 var projectDateEL = $('#project-date-input');
+var projectDeleteEl = $('.btn.btn-sm');
 
 
 // Things to execute upon loading the page
@@ -45,12 +46,17 @@ function printProjectData() {
 		var tdName = document.createElement("td");
 		var tdType = document.createElement("td");
 		var tdDate = document.createElement("td");
+		var tdDelete = $('<button>X</button');
+		tdDelete = document.getElementsByClassName('btn-sm');
         tdName.textContent = projectsSaved[i].projectName;
 		tdType.textContent = projectsSaved[i].projectType;
 		tdDate.textContent = projectsSaved[i].projectDate;
+		tdDelete.textContent = projectsSaved[i].projectDelete;
+		
 		row.append(tdName);
 		row.append(tdType);
 		row.append(tdDate);
+		row.append(tdDelete);
         tableEl.append(row);
 		
 	}
@@ -65,7 +71,8 @@ function handleProjectFormSubmit(event) {
 	var project = {
 		projectName: projectNameEl.val(),
 		projectType: projectTypeEl.val(),
-		projectDate: projectDateEL.val()
+		projectDate: projectDateEL.val(),
+		projectDelete: projectDeleteEl
 	}
 
 	// TODO: retrieve the current array of projects from local storage, add the new project object to it and, save the updated array of projects to local storage
@@ -80,26 +87,32 @@ function handleProjectFormSubmit(event) {
 	
 	projectsSaved.push(project);
 
+	// TODO: re-render the saved project data
 	localStorage.setItem('projects', JSON.stringify(projectsSaved));
 
 
-	// TODO: re-render the saved project data
+	console.log('projectSaved', projectsSaved);
 
 	printProjectData();
 	// TODO: clear the form inputs
 		projectNameEl.val("");
 		projectTypeEl.val("");
 		projectDateEL.val("");
-
+		projectDeleteEl.val("");
 }
 
 // TODO: Add a 'submit' event listener on the new project modal form
 projectFormEl.on('submit', handleProjectFormSubmit);
 // BONUS
 // Remove a project from local storage and display the updated project data
-function handleDeleteProject() {
-	// YOUR CODE
-}
+// deleteButtonEl.on('submit', handleDeleteProject);
+
+// function handleDeleteProject(event) {
+// 	event.preventDefault();
+// 	localStorage.removeItem('projects');
+	
+
+// }
 
 // Use jQuery event delegation to listen for clicks on dynamically added delete buttons.
 // YOUR CODE
