@@ -39,7 +39,6 @@ function printProjectData() {
 	  projectsSaved = [];
 	}
 
-	console.log('projectsSaved', projectsSaved);
   
 	for (let i = 0; i < projectsSaved.length; i++) {
 	  var row = document.createElement("tr");
@@ -48,7 +47,7 @@ function printProjectData() {
 	  var tdDate = document.createElement("td");
 	  var button = document.createElement('button');
 	  button.textContent = 'X';
-	  button.classList.add('btn');
+	  button.classList.add('btnonClik');
   
 	  tdName.textContent = projectsSaved[i].projectName;
 	  tdType.textContent = projectsSaved[i].projectType;
@@ -61,7 +60,6 @@ function printProjectData() {
   
 	  tableEl.append(row);
 	}
-
   }
 
 // Add a project to local storage and display the updated project data
@@ -100,16 +98,31 @@ projectFormEl.on('submit', handleProjectFormSubmit);
 
 
 function handleDeleteProject(event) {
-	event.preventDefault();
-	var projectIndex = $(event.target).closest('tr').index();
-	var projectsSaved = localStorage.getItem('projects');
-  
-	if (projectsSaved) {
-	  projectsSaved = JSON.parse(projectsSaved);
-	  projectsSaved.splice(projectIndex, 1);
-	  localStorage.setItem('projects', JSON.stringify(projectsSaved));
-	  printProjectData();
-	}
-  }
+    event.preventDefault();
+    var projectIndex = $(event.target).closest('tr').index();
+    var projectsSaved = localStorage.getItem('projects');
+    if (projectsSaved) {
+        projectsSaved = JSON.parse(projectsSaved);
+        projectsSaved.splice(projectIndex, 1);
+        projectsSaved.pop();
+        localStorage.setItem('projects', JSON.stringify(projectsSaved));
+        printProjectData();
+    }
+}
 
-$('.btn').on('click', handleDeleteProject);
+$('.btnonClick').on('click', handleDeleteProject);
+
+// function handleDelete(event) {
+// 	event.preventDefault();
+	
+// 	// Get the clicked delete button
+// 	var deleteButton = $(event.target);
+	
+// 	// Get the parent element of the delete button
+// 	var listItem = deleteButton.closest('tr');
+	
+// 	// Remove the list item from the DOM
+// 	listItem.remove();
+//   }
+
+//$('.project-today').on('click', '.delete-button', handleDelete);
