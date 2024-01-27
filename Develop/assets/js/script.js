@@ -104,7 +104,6 @@ function handleDeleteProject(event) {
     if (projectsSaved) {
         projectsSaved = JSON.parse(projectsSaved);
         projectsSaved.splice(projectIndex, 1);
-        projectsSaved.pop();
         localStorage.setItem('projects', JSON.stringify(projectsSaved));
         printProjectData();
     }
