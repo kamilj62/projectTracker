@@ -38,6 +38,8 @@ function printProjectData() {
 	} else {
 	  projectsSaved = [];
 	}
+
+	console.log('projectsSaved', projectsSaved);
   
 	for (let i = 0; i < projectsSaved.length; i++) {
 	  var row = document.createElement("tr");
@@ -59,6 +61,7 @@ function printProjectData() {
   
 	  tableEl.append(row);
 	}
+
   }
 
 // Add a project to local storage and display the updated project data
@@ -72,15 +75,14 @@ function handleProjectFormSubmit(event) {
 	}
   
 	var projectsSaved = localStorage.getItem('projects');
-  
+
 	if (projectsSaved) {
-	  projectsSaved = JSON.parse(projectsSaved);
+		projectsSaved = JSON.parse(projectsSaved);
 	} else {
-	  projectsSaved = [];
+		projectsSaved = [];
 	}
-  
+
 	projectsSaved.push(project);
-  
 	localStorage.setItem('projects', JSON.stringify(projectsSaved));
   
 	printProjectData();
@@ -92,6 +94,7 @@ function handleProjectFormSubmit(event) {
 
 // TODO: Add a 'submit' event listener on the new project modal form
 projectFormEl.on('submit', handleProjectFormSubmit);
+
 // BONUS
 // Remove a project from local storage and display the updated project data
 
@@ -110,7 +113,3 @@ function handleDeleteProject(event) {
   }
 
 $('.btn').on('click', handleDeleteProject);
-
-// Use jQuery event delegation to listen for clicks on dynamically added delete buttons.
-// YOUR CODE
-
