@@ -5,7 +5,7 @@ var projectFormEl = $("#project-form");
 var projectNameEl = $('#project-name-input');
 var projectTypeEl = $('#project-type-input');
 var projectDateEL = $('#project-date-input');
-var projectDeleteEl = $('.btn');
+var projectDeleteEl = $('.btnonClick');
 
 
 // Things to execute upon loading the page
@@ -109,7 +109,7 @@ function handleDeleteProject(event) {
     }
 }
 
-$('.btnonClick').on('click', handleDeleteProject);
+projectDeleteEl.on('click', handleDeleteProject);
 
 // function handleDelete(event) {
 // 	event.preventDefault();
@@ -122,6 +122,7 @@ $('.btnonClick').on('click', handleDeleteProject);
 	
 // 	// Remove the list item from the DOM
 // 	listItem.remove();
+//  printProjectData();
 //   }
 
-//$('.project-today').on('click', '.delete-button', handleDelete);
+// projectDeleteEl.on('click', '.delete-button', handleDelete());
